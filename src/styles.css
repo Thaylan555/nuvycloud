@@ -1,0 +1,104 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 3px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-deep: var(--surface-deep);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-green: var(--brand-green);
+}
+
+:root {
+  color-scheme: dark;
+  --radius: 0.5rem;
+  --background: oklch(0.115 0.026 275);
+  --foreground: oklch(0.975 0.008 265);
+  --card: oklch(0.17 0.038 275);
+  --card-foreground: oklch(0.975 0.008 265);
+  --popover: oklch(0.16 0.034 275);
+  --popover-foreground: oklch(0.975 0.008 265);
+  --primary: oklch(0.67 0.2 275);
+  --primary-foreground: oklch(0.99 0.005 270);
+  --secondary: oklch(0.24 0.065 282);
+  --secondary-foreground: oklch(0.96 0.014 270);
+  --muted: oklch(0.205 0.03 270);
+  --muted-foreground: oklch(0.71 0.035 265);
+  --accent: oklch(0.25 0.075 277);
+  --accent-foreground: oklch(0.98 0.01 270);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 270);
+  --border: oklch(0.32 0.045 275 / 0.72);
+  --input: oklch(0.28 0.042 275);
+  --ring: oklch(0.7 0.19 275);
+  --surface: oklch(0.16 0.034 275);
+  --surface-deep: oklch(0.13 0.029 275);
+  --brand-yellow: oklch(0.83 0.17 82);
+  --brand-green: oklch(0.76 0.17 155);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); letter-spacing: 0; }
+  ::selection { background: color-mix(in oklab, var(--color-primary) 38%, transparent); }
+  a, button { -webkit-tap-highlight-color: transparent; }
+}
+
+@utility site-container { width: min(100% - 2rem, 1180px); margin-inline: auto; }
+@utility section { padding-block: clamp(4rem, 8vw, 7rem); }
+@utility section-title { margin-top: 0.9rem; font-family: var(--font-display); font-size: clamp(1.85rem, 4vw, 3rem); line-height: 1.08; font-weight: 800; }
+@utility section-copy { margin-top: 1rem; font-size: 1rem; line-height: 1.75; color: var(--color-muted-foreground); }
+@utility eyebrow { display: inline-flex; align-items: center; gap: .45rem; color: var(--color-brand-yellow); font-size: .68rem; line-height: 1; font-weight: 800; text-transform: uppercase; letter-spacing: .16em; }
+@utility nav-link { border-radius: var(--radius-md); padding: .6rem .7rem; color: var(--color-muted-foreground); font-size: .78rem; font-weight: 700; transition: color 160ms, background 160ms; &:hover { color: var(--color-foreground); background: var(--color-accent); } }
+@utility nav-link-active { color: var(--color-foreground); background: var(--color-accent); }
+@utility footer-link { color: var(--color-muted-foreground); font-size: .8rem; transition: color 160ms; &:hover { color: var(--color-foreground); } }
+@utility hero-grid { background-image: linear-gradient(color-mix(in oklab, var(--color-border) 30%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--color-border) 30%, transparent) 1px, transparent 1px); background-size: 56px 56px; background-position: center; }
+@utility status-panel { min-height: 150px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1rem; background: color-mix(in oklab, var(--color-surface) 92%, transparent); box-shadow: 0 16px 44px color-mix(in oklab, var(--color-background) 62%, transparent); }
+@utility status-dot { width: .55rem; height: .55rem; border-radius: 999px; background: var(--color-brand-green); box-shadow: 0 0 14px color-mix(in oklab, var(--color-brand-green) 65%, transparent); }
+@utility infra-orbit { position: absolute; inset: 12% 4%; border: 1px solid color-mix(in oklab, var(--color-primary) 48%, transparent); border-radius: 50%; transform: rotate(-12deg); box-shadow: 0 0 55px color-mix(in oklab, var(--color-primary) 16%, transparent); }
+@utility metric-card { display: flex; align-items: flex-start; gap: .9rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.1rem; background: var(--color-surface); }
+@utility cta-band { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; overflow: hidden; border: 1px solid color-mix(in oklab, var(--color-primary) 52%, var(--color-border)); border-radius: var(--radius-lg); padding: clamp(1.5rem, 5vw, 3rem); background: linear-gradient(112deg, var(--color-surface), color-mix(in oklab, var(--color-primary) 13%, var(--color-surface))); @media (min-width: 768px) { flex-direction: row; align-items: center; } }
+@utility plan-card { position: relative; display: flex; min-width: 0; flex-direction: column; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.35rem; background: var(--color-surface); }
+@utility plan-card-featured { border-color: color-mix(in oklab, var(--color-primary) 72%, var(--color-border)); box-shadow: 0 18px 50px color-mix(in oklab, var(--color-primary) 12%, transparent); }
+@utility plan-badge { position: absolute; right: 1rem; top: 1rem; border: 1px solid color-mix(in oklab, var(--color-brand-yellow) 45%, transparent); border-radius: 999px; padding: .35rem .55rem; background: color-mix(in oklab, var(--color-brand-yellow) 12%, var(--color-surface)); color: var(--color-brand-yellow); font-size: .57rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
+@utility page-intro { padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem); background: linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 7%, var(--color-background)), var(--color-background)); }
+@utility status-service { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.1rem; background: var(--color-surface); }
+@utility prose-legal { max-width: 760px; h2 { margin-top: 2.25rem; font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; } p, li { margin-top: .8rem; color: var(--color-muted-foreground); font-size: .92rem; line-height: 1.75; } ul { padding-left: 1.25rem; list-style: disc; } }
+@utility minecraft-scene { position: relative; min-height: 330px; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-background); }
+@utility pixel-moon { position: absolute; right: 12%; top: 12%; width: 105px; height: 105px; border-radius: 50%; background: var(--color-brand-yellow); box-shadow: 0 0 50px color-mix(in oklab, var(--color-brand-yellow) 30%, transparent); }
+@utility server-stack { position: absolute; bottom: 12%; left: 12%; display: grid; width: 72%; gap: .65rem; span { display: block; height: 62px; border: 1px solid color-mix(in oklab, var(--color-primary) 55%, var(--color-border)); border-radius: var(--radius-md); background: linear-gradient(90deg, var(--color-surface), var(--color-secondary)); box-shadow: 12px 12px 0 color-mix(in oklab, var(--color-primary) 10%, transparent); } span::after { content: ""; display: block; width: .65rem; height: .65rem; margin: 1.55rem 0 0 calc(100% - 2rem); border-radius: 999px; background: var(--color-brand-green); } }
+
+@media (max-width: 639px) {
+  .site-container { width: min(100% - 1.25rem, 1180px); }
+  .plan-card { padding: 1.1rem; }
+  .plan-badge { position: static; align-self: flex-start; margin-bottom: .7rem; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

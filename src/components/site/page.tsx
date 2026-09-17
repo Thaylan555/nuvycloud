@@ -1,0 +1,7 @@
+import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+export function PageIntro({eyebrow,title,description}:{eyebrow:string;title:string;description:string}){return <section className="page-intro"><div className="site-container"><span className="eyebrow">{eyebrow}</span><h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold sm:text-5xl">{title}</h1><p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">{description}</p></div></section>}
+export function LegalPage({title,updated,children}:{title:string;updated:string;children:ReactNode}){return <><PageIntro eyebrow="Documentos legais" title={title} description={`Última atualização: ${updated}`}/><section className="pb-24"><article className="site-container prose-legal">{children}</article></section></>}
+export function NotFoundPage(){return <div className="flex min-h-[70vh] items-center"><div className="site-container"><span className="font-display text-8xl font-black text-primary/30">404</span><h1 className="mt-3 font-display text-4xl font-extrabold">Essa rota saiu de órbita.</h1><p className="mt-4 text-muted-foreground">A página que você procura não existe ou foi movida.</p><Button className="mt-7" asChild><Link to="/"><ArrowLeft/> Voltar ao início</Link></Button></div></div>}
